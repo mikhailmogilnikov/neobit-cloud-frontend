@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fix:next-async": "npx @next/codemod@canary next-async-request-api"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.0-beta.4",

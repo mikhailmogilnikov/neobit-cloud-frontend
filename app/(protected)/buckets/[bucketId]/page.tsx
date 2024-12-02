@@ -1,5 +1,7 @@
 import { BucketPage } from '@/src/page/protected/bucket';
 
-export default function Bucket({ params }: { params: { bucketId: string } }) {
+export default async function Bucket(props: { params: Promise<{ bucketId: string }> }) {
+  const params = await props.params;
+
   return <BucketPage bucketId={params.bucketId} />;
 }
