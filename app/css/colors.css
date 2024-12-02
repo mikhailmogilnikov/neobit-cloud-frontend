@@ -54,4 +54,7 @@
   /* App palette colors */
   --default: hsl(0, 0%, 15%);
   --default-foreground: hsl(0, 0%, 85%);
+
+  --error: hsl(0, 60%, 52%);
+  --error-foreground: hsl(0, 0%, 95%);
 }

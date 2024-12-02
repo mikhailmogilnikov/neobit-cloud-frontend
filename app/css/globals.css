@@ -2,6 +2,20 @@
 
 @theme {
   --spacing: 0.25rem;
+
+  --text-xs--letter-spacing: -0.015em;
+  --text-sm--letter-spacing: -0.015em;
+  --text-base--letter-spacing: -0.015em;
+  --text-lg--letter-spacing: -0.02em;
+  --text-xl--letter-spacing: -0.025em;
+  --text-2xl--letter-spacing: -0.03em;
+  --text-3xl--letter-spacing: -0.045em;
+  --text-4xl--letter-spacing: -0.05em;
+  --text-5xl--letter-spacing: -0.055em;
+  --text-6xl--letter-spacing: -0.06em;
+  --text-7xl--letter-spacing: -0.08em;
+  --text-8xl--letter-spacing: -0.085em;
+  --text-9xl--letter-spacing: -0.09em;
 }
 
 @theme {
@@ -61,4 +75,18 @@
   --color-default-800: hsl(from var(--default) h s 80%);
   --color-default-900: hsl(from var(--default) h s 90%);
   --color-default-950: hsl(from var(--default) h s 95%);
+
+  --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
+  --color-error-50: hsl(from var(--error) h s 5%);
+  --color-error-100: hsl(from var(--error) h s 10%);
+  --color-error-200: hsl(from var(--error) h s 20%);
+  --color-error-300: hsl(from var(--error) h s 30%);
+  --color-error-400: hsl(from var(--error) h s 40%);
+  --color-error-500: hsl(from var(--error) h s 50%);
+  --color-error-600: hsl(from var(--error) h s 60%);
+  --color-error-700: hsl(from var(--error) h s 70%);
+  --color-error-800: hsl(from var(--error) h s 80%);
+  --color-error-900: hsl(from var(--error) h s 90%);
+  --color-error-950: hsl(from var(--error) h s 95%);
 }
