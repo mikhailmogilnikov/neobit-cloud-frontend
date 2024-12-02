@@ -1,0 +1,57 @@
+:root {
+  /* Base colors */
+  --background: hsl(0, 0%, 95%);
+  --background-foreground: hsl(0, 0%, 5%);
+
+  --foreground: hsl(0, 0%, 5%);
+  --foreground-foreground: hsl(0, 0%, 95%);
+
+  --border: hsl(0, 0%, 85%);
+  --border-foreground: hsl(0, 0%, 15%);
+
+  /* Content colors */
+  --content1: hsl(0, 0%, 85%);
+  --content1-foreground: hsl(0, 0%, 15%);
+
+  --content2: hsl(0, 0%, 75%);
+  --content2-foreground: hsl(0, 0%, 25%);
+
+  --content3: hsl(0, 0%, 65%);
+  --content3-foreground: hsl(0, 0%, 35%);
+
+  --content4: hsl(0, 0%, 55%);
+  --content4-foreground: hsl(0, 0%, 45%);
+
+  /* App palette colors */
+  --default: hsl(0, 0%, 85%);
+  --default-foreground: hsl(0, 0%, 15%);
+}
+
+:root.dark {
+  /* Base colors */
+  --background: hsl(0, 0%, 5%);
+  --background-foreground: hsl(0, 0%, 95%);
+
+  --foreground: hsl(0, 0%, 95%);
+  --foreground-foreground: hsl(0, 0%, 5%);
+
+  --border: hsl(0, 0%, 15%);
+  --border-foreground: hsl(0, 0%, 85%);
+
+  /* Content colors */
+  --content1: hsl(0, 0%, 15%);
+  --content1-foreground: hsl(0, 0%, 85%);
+
+  --content2: hsl(0, 0%, 25%);
+  --content2-foreground: hsl(0, 0%, 75%);
+
+  --content3: hsl(0, 0%, 35%);
+  --content3-foreground: hsl(0, 0%, 65%);
+
+  --content4: hsl(0, 0%, 45%);
+  --content4-foreground: hsl(0, 0%, 55%);
+
+  /* App palette colors */
+  --default: hsl(0, 0%, 15%);
+  --default-foreground: hsl(0, 0%, 85%);
+}
