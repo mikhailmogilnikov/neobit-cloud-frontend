@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 
 import { GlobalAppMetadata, GlobalAppViewport } from '@/src/shared/config/app-config';
 import { FontSans } from '@/src/shared/config/fonts';
-import { parseThemeVariablesToCssString } from '@/src/shared/utils/theme/generate-theme-variables';
+import { parseThemeVariablesToCssString } from '@/src/shared/lib/utils/theme/generate-theme-variables';
 import { AppThemeConfig } from '@/src/shared/config/theme';
 
 import Providers from './providers';

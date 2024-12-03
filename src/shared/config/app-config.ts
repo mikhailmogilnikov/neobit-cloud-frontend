@@ -11,7 +11,7 @@ export const GlobalAppMetadata: Metadata = {
 };
 
 export const GlobalAppViewport: Viewport = {
-  themeColor: '#000000',
+  themeColor: 'var(--color-background)',
   width: 'device-width',
   height: 'device-height',
   initialScale: 1,

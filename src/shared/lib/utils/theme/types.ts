@@ -36,7 +36,7 @@ export type ThemeColors = {
 
   success?: ThemeColor;
   warning?: ThemeColor;
-  error?: ThemeColor;
+  danger?: ThemeColor;
 };
 
 export type Theme = {
