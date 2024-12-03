@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 
 import './css/globals.css';
-import './css/colors.css';
 
 import { clsx } from 'clsx';
 
 import { GlobalAppMetadata, GlobalAppViewport } from '@/src/shared/config/app-config';
 import { FontSans } from '@/src/shared/config/fonts';
+import { parseThemeVariablesToCssString } from '@/src/shared/lib/utils/theme/generate-theme-variables';
+import { AppThemeConfig } from '@/src/shared/config/theme';
 
 import Providers from './providers';
 
@@ -18,8 +19,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cssLine = parseThemeVariablesToCssString(AppThemeConfig);
+
   return (
     <html suppressHydrationWarning dir='ltr' lang='ru'>
+      <head>
+        <style>{cssLine}</style>
+      </head>
       <body
         className={clsx('bg-background text-foreground font-sans antialiased', FontSans.variable)}
       >

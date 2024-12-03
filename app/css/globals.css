@@ -9,7 +9,7 @@
   --text-lg--letter-spacing: -0.02em;
   --text-xl--letter-spacing: -0.025em;
   --text-2xl--letter-spacing: -0.03em;
-  --text-3xl--letter-spacing: -0.045em;
+  --text-3xl--letter-spacing: -0.03em;
   --text-4xl--letter-spacing: -0.05em;
   --text-5xl--letter-spacing: -0.055em;
   --text-6xl--letter-spacing: -0.06em;
@@ -19,74 +19,103 @@
 }
 
 @theme {
-  --color-background: var(--background);
-  --color-background-foreground: var(--background-foreground);
-  --color-background-50: hsl(from var(--background) h s 5%);
-  --color-background-100: hsl(from var(--background) h s 10%);
-  --color-background-200: hsl(from var(--background) h s 20%);
-  --color-background-300: hsl(from var(--background) h s 30%);
-  --color-background-400: hsl(from var(--background) h s 40%);
-  --color-background-500: hsl(from var(--background) h s 50%);
-  --color-background-600: hsl(from var(--background) h s 60%);
-  --color-background-700: hsl(from var(--background) h s 70%);
-  --color-background-800: hsl(from var(--background) h s 80%);
-  --color-background-900: hsl(from var(--background) h s 90%);
-  --color-background-950: hsl(from var(--background) h s 95%);
+  --animate-ios-spinner: ios-spinner 1.2s linear infinite;
 
-  --color-foreground: var(--foreground);
-  --color-foreground-foreground: var(--foreground-foreground);
-  --color-foreground-50: hsl(from var(--foreground) h s 5%);
-  --color-foreground-100: hsl(from var(--foreground) h s 10%);
-  --color-foreground-200: hsl(from var(--foreground) h s 20%);
-  --color-foreground-300: hsl(from var(--foreground) h s 30%);
-  --color-foreground-400: hsl(from var(--foreground) h s 40%);
-  --color-foreground-500: hsl(from var(--foreground) h s 50%);
-  --color-foreground-600: hsl(from var(--foreground) h s 60%);
-  --color-foreground-700: hsl(from var(--foreground) h s 70%);
-  --color-foreground-800: hsl(from var(--foreground) h s 80%);
-  --color-foreground-900: hsl(from var(--foreground) h s 90%);
-  --color-foreground-950: hsl(from var(--foreground) h s 95%);
+  @keyframes ios-spinner {
+    0% {
+      opacity: 0;
+    }
+    8% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
 
-  --color-border: var(--border);
-  --color-border-foreground: var(--border-foreground);
+@theme {
+  --color-background: var(--theme-background);
+  --color-background-foreground: var(--theme-background-foreground);
 
-  --color-content1: var(--content1);
-  --color-content1-foreground: var(--content1-foreground);
+  --color-foreground: var(--theme-foreground);
+  --color-foreground-foreground: var(--theme-foreground-foreground);
 
-  --color-content2: var(--content2);
-  --color-content2-foreground: var(--content2-foreground);
+  --color-border: var(--theme-border);
+  --color-border-foreground: var(--theme-border-foreground);
 
-  --color-content3: var(--content3);
-  --color-content3-foreground: var(--content3-foreground);
+  --color-content1: var(--theme-content1);
+  --color-content2: var(--theme-content2);
+  --color-content3: var(--theme-content3);
+  --color-content4: var(--theme-content4);
 
-  --color-content4: var(--content4);
-  --color-content4-foreground: var(--content4-foreground);
+  --color-default: var(--theme-default);
+  --color-default-foreground: var(--theme-default-foreground);
+  --color-default-50: var(--theme-default-50);
+  --color-default-100: var(--theme-default-100);
+  --color-default-200: var(--theme-default-200);
+  --color-default-300: var(--theme-default-300);
+  --color-default-400: var(--theme-default-400);
+  --color-default-500: var(--theme-default-500);
+  --color-default-600: var(--theme-default-600);
+  --color-default-700: var(--theme-default-700);
+  --color-default-800: var(--theme-default-800);
+  --color-default-900: var(--theme-default-900);
+  --color-default-950: var(--theme-default-950);
 
-  --color-default: var(--default);
-  --color-default-foreground: var(--default-foreground);
-  --color-default-50: hsl(from var(--default) h s 5%);
-  --color-default-100: hsl(from var(--default) h s 10%);
-  --color-default-200: hsl(from var(--default) h s 20%);
-  --color-default-300: hsl(from var(--default) h s 30%);
-  --color-default-400: hsl(from var(--default) h s 40%);
-  --color-default-500: hsl(from var(--default) h s 50%);
-  --color-default-600: hsl(from var(--default) h s 60%);
-  --color-default-700: hsl(from var(--default) h s 70%);
-  --color-default-800: hsl(from var(--default) h s 80%);
-  --color-default-900: hsl(from var(--default) h s 90%);
-  --color-default-950: hsl(from var(--default) h s 95%);
+  --color-primary: var(--theme-primary);
+  --color-primary-foreground: var(--theme-primary-foreground);
+  --color-primary-50: var(--theme-primary-50);
+  --color-primary-100: var(--theme-primary-100);
+  --color-primary-200: var(--theme-primary-200);
+  --color-primary-300: var(--theme-primary-300);
+  --color-primary-400: var(--theme-primary-400);
+  --color-primary-500: var(--theme-primary-500);
+  --color-primary-600: var(--theme-primary-600);
+  --color-primary-700: var(--theme-primary-700);
+  --color-primary-800: var(--theme-primary-800);
+  --color-primary-900: var(--theme-primary-900);
+  --color-primary-950: var(--theme-primary-950);
 
-  --color-error: var(--error);
-  --color-error-foreground: var(--error-foreground);
-  --color-error-50: hsl(from var(--error) h s 5%);
-  --color-error-100: hsl(from var(--error) h s 10%);
-  --color-error-200: hsl(from var(--error) h s 20%);
-  --color-error-300: hsl(from var(--error) h s 30%);
-  --color-error-400: hsl(from var(--error) h s 40%);
-  --color-error-500: hsl(from var(--error) h s 50%);
-  --color-error-600: hsl(from var(--error) h s 60%);
-  --color-error-700: hsl(from var(--error) h s 70%);
-  --color-error-800: hsl(from var(--error) h s 80%);
-  --color-error-900: hsl(from var(--error) h s 90%);
-  --color-error-950: hsl(from var(--error) h s 95%);
+  --color-danger: var(--theme-danger);
+  --color-danger-foreground: var(--theme-danger-foreground);
+  --color-danger-50: var(--theme-danger-50);
+  --color-danger-100: var(--theme-danger-100);
+  --color-danger-200: var(--theme-danger-200);
+  --color-danger-300: var(--theme-danger-300);
+  --color-danger-400: var(--theme-danger-400);
+  --color-danger-500: var(--theme-danger-500);
+  --color-danger-600: var(--theme-danger-600);
+  --color-danger-700: var(--theme-danger-700);
+  --color-danger-800: var(--theme-danger-800);
+  --color-danger-900: var(--theme-danger-900);
+  --color-danger-950: var(--theme-danger-950);
+
+  --color-warning: var(--theme-warning);
+  --color-warning-foreground: var(--theme-warning-foreground);
+  --color-warning-50: var(--theme-warning-50);
+  --color-warning-100: var(--theme-warning-100);
+  --color-warning-200: var(--theme-warning-200);
+  --color-warning-300: var(--theme-warning-300);
+  --color-warning-400: var(--theme-warning-400);
+  --color-warning-500: var(--theme-warning-500);
+  --color-warning-600: var(--theme-warning-600);
+  --color-warning-700: var(--theme-warning-700);
+  --color-warning-800: var(--theme-warning-800);
+  --color-warning-900: var(--theme-warning-900);
+  --color-warning-950: var(--theme-warning-950);
+
+  --color-success: var(--theme-success);
+  --color-success-foreground: var(--theme-success-foreground);
+  --color-success-50: var(--theme-success-50);
+  --color-success-100: var(--theme-success-100);
+  --color-success-200: var(--theme-success-200);
+  --color-success-300: var(--theme-success-300);
+  --color-success-400: var(--theme-success-400);
+  --color-success-500: var(--theme-success-500);
+  --color-success-600: var(--theme-success-600);
+  --color-success-700: var(--theme-success-700);
+  --color-success-800: var(--theme-success-800);
+  --color-success-900: var(--theme-success-900);
+  --color-success-950: var(--theme-success-950);
 }
