@@ -23,6 +23,7 @@ export type ThemeColors = {
   background?: ThemeColor;
   foreground?: ThemeColor;
   border?: ThemeColor;
+  outline?: ThemeColor;
 
   content1?: ThemeColor;
   content2?: ThemeColor;

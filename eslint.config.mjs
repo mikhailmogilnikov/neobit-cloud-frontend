@@ -17,6 +17,7 @@ const eslintConfig = [
       '@conarti/feature-sliced/layers-slices': 'off',
       '@conarti/feature-sliced/absolute-relative': 'warn',
       '@conarti/feature-sliced/public-api': 'error',
+      'react/display-name': 'warn',
       'no-console': 'warn',
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/interactive-supports-focus': 'warn',

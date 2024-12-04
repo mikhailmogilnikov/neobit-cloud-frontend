@@ -1,6 +1,6 @@
 import { VariantProps } from 'tailwind-variants';
 
-import { tv } from '../../lib/utils/styling';
+import { tv } from '../../../lib/utils/styling';
 
 export const dividerTV = tv({
   base: 'bg-border border-0',

@@ -7,6 +7,9 @@ export const spinnerTv = tv({
   },
   variants: {
     color: {
+      inverse: {
+        item: 'bg-background',
+      },
       default: {
         item: 'bg-foreground',
       },
