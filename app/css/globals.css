@@ -1,7 +1,25 @@
 @import 'tailwindcss';
 
+:root {
+  --corner-smoothing: 1;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--theme-default) inset !important;
+  }
+}
+
 @theme {
   --spacing: 0.25rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
 
   --text-xs--letter-spacing: -0.015em;
   --text-sm--letter-spacing: -0.015em;
@@ -19,6 +37,7 @@
 }
 
 @theme {
+  --default-transition-duration: 0.2s;
   --animate-ios-spinner: ios-spinner 1.2s linear infinite;
 
   @keyframes ios-spinner {
@@ -34,6 +53,16 @@
   }
 }
 
+@layer components {
+  .transition-transform-colors {
+    transition-property: filter, transform, translate, scale, rotate, colors, opacity, color,
+      background-color, border-color, text-decoration-color, fill, stroke, --tw-gradient-from,
+      --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--default-transition-duration);
+  }
+}
+
 @theme {
   --color-background: var(--theme-background);
   --color-background-foreground: var(--theme-background-foreground);
@@ -43,6 +72,9 @@
 
   --color-border: var(--theme-border);
   --color-border-foreground: var(--theme-border-foreground);
+
+  --color-outline: var(--theme-outline);
+  --color-outline-foreground: var(--theme-outline-foreground);
 
   --color-content1: var(--theme-content1);
   --color-content2: var(--theme-content2);

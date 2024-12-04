@@ -24,6 +24,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning dir='ltr' lang='ru'>
       <head>
+        <meta content='hsl(0, 0%, 5%)' name='theme-color' />
         <style>{cssLine}</style>
       </head>
       <body
