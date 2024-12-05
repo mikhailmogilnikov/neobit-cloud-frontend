@@ -6,7 +6,7 @@ import * as m from 'motion/react-m';
 import { AnimatePresence } from 'motion/react';
 
 import { Flex } from '@/src/shared/ui/flex';
-import { Input } from '@/src/shared/ui/inputs';
+import { Input, InputPassword } from '@/src/shared/ui/inputs';
 import { EAppRoutes } from '@/src/shared/config/routes';
 import { Button } from '@/src/shared/ui/button';
 import { Squircle } from '@/src/shared/ui/squircle';
@@ -42,13 +42,13 @@ export const SignInPage = () => {
   };
 
   return (
-    <Flex col align='center' as='main' className='gap-6 px-4' justify='center'>
+    <Flex col align='center' as='main' className='gap-6 px-4 pb-24' justify='center'>
       <form className='flex w-full flex-col gap-4 sm:max-w-xs' onSubmit={handleSubmit}>
         <AnimatePresence>
           <m.div key='form' layout className='flex flex-col gap-4'>
             <h1 className='mb-1 text-2xl font-semibold'>Вход в систему</h1>
             <Input name='email' placeholder='Email' sizes='lg' />
-            <Input name='password' placeholder='Пароль' sizes='lg' type='password' />
+            <InputPassword name='password' placeholder='Пароль' sizes='lg' />
 
             <Link
               className='text-foreground/50 text-sm font-medium'

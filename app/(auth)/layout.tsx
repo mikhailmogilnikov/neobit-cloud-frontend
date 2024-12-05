@@ -10,13 +10,13 @@ import { ThemeSelector } from '@/src/shared/ui/theme-selector';
 export default async function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <Flex col className='gap-6'>
-      <Flex col align='center' className='h-32' justify='center'>
+      <Flex col align='center' className='h-48 gap-6' justify='center'>
         <Link href={EAppRoutes.SIGN_IN}>
           <Logo />
         </Link>
+        <ThemeSelector className='self-center' />
       </Flex>
       {children}
-      <ThemeSelector className='mt-12 self-center' />
     </Flex>
   );
 }
