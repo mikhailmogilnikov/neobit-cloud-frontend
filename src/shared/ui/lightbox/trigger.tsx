@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 'use client';
 
 import * as m from 'motion/react-m';

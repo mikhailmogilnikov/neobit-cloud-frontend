@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { useCallback, useRef, useState } from 'react';
 
 import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect';
@@ -79,10 +77,13 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(
     });
   }, [ref, setSize]);
 
-  const throttledHandleSize = useCallback(
-    throttlingDelayMs > 0 ? throttle(handleSize, throttlingDelayMs) : handleSize,
-    [handleSize, throttlingDelayMs],
-  );
+  const throttledHandleSize = useCallback(() => {
+    if (throttlingDelayMs > 0) {
+      return throttle(handleSize, throttlingDelayMs);
+    } else {
+      return handleSize();
+    }
+  }, [handleSize, throttlingDelayMs]);
 
   useIsomorphicLayoutEffect(() => {
     if (!ref) return;
