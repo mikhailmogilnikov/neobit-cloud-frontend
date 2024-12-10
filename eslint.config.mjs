@@ -12,8 +12,10 @@ const eslintConfig = [
       'plugin:jsx-a11y/recommended',
       'plugin:@conarti/feature-sliced/recommended',
     ],
-    plugins: ['jsx-a11y', 'prettier', 'unused-imports', 'import'],
+    plugins: ['jsx-a11y', 'prettier', 'unused-imports', 'import', 'eslint-plugin-react-compiler'],
     rules: {
+      'react-hooks/exhaustive-deps': 'off',
+      'react-compiler/react-compiler': 'error',
       '@conarti/feature-sliced/layers-slices': 'off',
       '@conarti/feature-sliced/absolute-relative': 'warn',
       '@conarti/feature-sliced/public-api': 'error',

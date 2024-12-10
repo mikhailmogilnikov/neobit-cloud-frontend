@@ -16,6 +16,7 @@ export function middleware(request: NextRequest) {
 
   const currentPath = pathname;
 
+  // Unknown routes skip
   if (!Object.values(EAppRoutes).includes(currentPath as EAppRoutes)) return NextResponse.next();
 
   if (!token) {
@@ -31,13 +32,14 @@ export function middleware(request: NextRequest) {
   }
 
   if (token) {
-    const isAuthRoute = AppPrivateRoutes.some((route) => {
+    const isPrivateRoute = AppPrivateRoutes.some((route) => {
       const regex = new RegExp(route);
 
       return regex.test(currentPath);
     });
 
-    if (isAuthRoute) {
+
+    if (!isPrivateRoute) {
       return NextResponse.redirect(`${origin}${EAppRoutes.BUCKETS}`);
     }
   }

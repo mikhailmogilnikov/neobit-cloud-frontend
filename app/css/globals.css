@@ -39,6 +39,8 @@
 @theme {
   --default-transition-duration: 0.2s;
   --animate-ios-spinner: ios-spinner 1.2s linear infinite;
+  --animate-shimmer: shimmer 2s infinite;
+  --animate-fade-in: fade-in 0.25s ease-in-out;
 
   @keyframes ios-spinner {
     0% {
@@ -49,6 +51,21 @@
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 }

@@ -1,3 +1,7 @@
+import { redirect } from "next/navigation";
+
+import { EAppRoutes } from "@/src/shared/config/routes";
+
 export default function Home() {
-  return <div className='flex h-screen flex-col items-center justify-center' />;
+  redirect(EAppRoutes.SIGN_IN)
 }

@@ -30,7 +30,11 @@ export default function RootLayout({
       <body
         className={clsx('bg-background text-foreground font-sans antialiased', FontSans.variable)}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <div data-vaul-drawer-wrapper className='bg-background min-h-svh'>
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

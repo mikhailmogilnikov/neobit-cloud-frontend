@@ -53,7 +53,7 @@ export const ThemeSelector = ({ className }: { className?: string }) => {
       <m.div className='absolute inset-0 flex items-center px-1.5'>
         <m.span
           animate={{ x: pointerPosition[theme as ETheme] }}
-          className='bg-foreground/10 z-1 aspect-square w-8 rounded-full'
+          className='bg-foreground/10 dark:bg-foreground/5 z-1 aspect-square w-8 rounded-full'
           initial={false}
           transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
         />
