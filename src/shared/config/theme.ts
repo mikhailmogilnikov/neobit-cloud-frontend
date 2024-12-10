@@ -26,7 +26,7 @@ export const AppThemeConfig: ThemeConfig = {
       colors: {
         background: { autoGeneratePalette: false, default: 'hsl(0, 0%, 5%)' },
         foreground: { autoGeneratePalette: false, default: 'hsl(0, 0%, 95%)' },
-        border: { autoGeneratePalette: false, default: 'hsl(0, 0%, 20%)' },
+        border: { autoGeneratePalette: false, default: 'hsl(0, 0%, 15%)' },
         outline: { autoGeneratePalette: false, default: 'hsl(0, 0%, 30%)' },
         content1: { autoGeneratePalette: false, default: 'hsl(0, 0%, 8%)' },
         content2: { autoGeneratePalette: false, default: 'hsl(0, 0%, 11%)' },
