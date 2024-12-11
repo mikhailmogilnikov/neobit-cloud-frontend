@@ -1,6 +1,3 @@
-import Link from 'next/link';
-
-import { generateBucketRoute } from '@/src/shared/config/routes';
 import { BucketCard, IBucket } from '@/src/entities/bucket';
 import { ItemsGrid } from '@/src/shared/ui/items-grid';
 
@@ -14,9 +11,9 @@ export const BucketsList = async () => {
   return (
     <ItemsGrid>
       {buckets.map((bucket) => (
-        <Link key={bucket.id} href={generateBucketRoute(bucket.id)}>
-          <BucketCard bucket={bucket} />
-        </Link>
+        // <Link key={bucket.id} href={generateBucketRoute(bucket.id)}>
+        <BucketCard key={bucket.id} bucket={bucket} />
+        // </Link>
       ))}
     </ItemsGrid>
   );

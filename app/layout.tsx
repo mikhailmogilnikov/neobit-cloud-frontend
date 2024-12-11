@@ -28,7 +28,10 @@ export default function RootLayout({
         <style>{cssLine}</style>
       </head>
       <body
-        className={clsx('bg-background text-foreground font-sans antialiased', FontSans.variable)}
+        className={clsx(
+          'bg-background text-foreground font-sans antialiased select-none',
+          FontSans.variable,
+        )}
       >
         <Providers>
           <div data-vaul-drawer-wrapper className='bg-background min-h-svh'>
