@@ -7,6 +7,8 @@ import { plural } from '@/src/shared/lib/utils/common';
 
 import { IBucket } from '../../model/bucket.type';
 
+import { CardOptions } from './options';
+
 export interface IBucketCardProps {
   bucket: IBucket;
 }
@@ -23,11 +25,14 @@ export const BucketCard = ({ bucket }: IBucketCardProps) => {
           <PiFolder className='h-1/2 w-1/2' opacity={0.2} />
         </Flex>
       </Squircle>
-      <Flex col className='gap-1'>
-        <h3 className='text-md font-semibold'>{name}</h3>
-        <p className='text-xs text-gray-500'>
-          {files_count} {plural(files_count, ['файл', 'файла', 'файлов'])}, {formattedSize}
-        </p>
+      <Flex className=''>
+        <Flex col className='gap-1 w-full'>
+          <h3 className='text-md font-semibold'>{name}</h3>
+          <p className='text-xs text-gray-500'>
+            {files_count} {plural(files_count, ['файл', 'файла', 'файлов'])}, {formattedSize}
+          </p>
+        </Flex>
+        <CardOptions />
       </Flex>
     </Flex>
   );

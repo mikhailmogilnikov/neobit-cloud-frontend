@@ -64,7 +64,6 @@ export const useSquircle = (props: UseSquircleProps) => {
     [style, path, disableSmoothing],
   );
 
-
   const wrapperStyle = useMemo(
     () => ({
       borderRadius: wrapperRadius,

@@ -10,6 +10,8 @@
     "fix:next-async": "npx @next/codemod@canary next-async-request-api"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-popover": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@tailwindcss/postcss": "^4.0.0-beta.4",
     "babel-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
