@@ -79,9 +79,11 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(
 
   const throttledHandleSize = useCallback(() => {
     if (throttlingDelayMs > 0) {
-      return throttle(handleSize, throttlingDelayMs);
+      const throttled = throttle(handleSize, throttlingDelayMs);
+
+      throttled();
     } else {
-      return handleSize();
+      handleSize();
     }
   }, [handleSize, throttlingDelayMs]);
 
