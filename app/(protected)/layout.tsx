@@ -1,12 +1,17 @@
-'use cache';
+'use client';
+
+import dynamic from 'next/dynamic';
 
 import { Flex } from '@/src/shared/ui/flex';
-import { Header } from '@/src/widgets/header';
 
-export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
+const DynamicHeader = dynamic(() => import('@/src/widgets/header').then((mod) => mod.Header), {
+  ssr: false,
+});
+
+export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
   return (
     <Flex col className='pt-16'>
-      <Header />
+      <DynamicHeader />
       {children}
     </Flex>
   );
