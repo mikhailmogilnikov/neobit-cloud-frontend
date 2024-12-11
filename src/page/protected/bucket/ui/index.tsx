@@ -1,23 +1,16 @@
-import { Suspense } from 'react';
+// export const StaticBucketsPage = async ({ children }: { children: React.ReactNode }) => {
+//   'use cache';
 
-import { Flex } from '@/src/shared/ui/flex';
-import { SectionHeader } from '@/src/shared/ui/section-header';
+//   return (
+//     <Flex col as='main' className='container mx-auto gap-4 p-4'>
+//       <SectionHeader backable>Бакет</SectionHeader>
+//       {children}
+//     </Flex>
+//   );
+// };
 
-export const StaticBucketsPage = async ({ children }: { children: React.ReactNode }) => {
-  'use cache';
+export const BucketPage = async ({ bucketId }: { bucketId: Promise<string> }) => {
+  const bucket = await bucketId;
 
-  return (
-    <Flex col as='main' className='container mx-auto gap-4 p-4'>
-      <SectionHeader backable>Бакет</SectionHeader>
-      {children}
-    </Flex>
-  );
-};
-
-export const BucketPage = ({ bucketId }: { bucketId: string }) => {
-  return (
-    <StaticBucketsPage>
-      <Suspense>{bucketId}</Suspense>
-    </StaticBucketsPage>
-  );
+  return <div>{bucket}</div>;
 };
