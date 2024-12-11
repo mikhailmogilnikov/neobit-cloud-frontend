@@ -1,5 +1,5 @@
 import { BucketsPage } from '@/src/page/protected/buckets';
 
-export default function Buckets() {
+export default async function Buckets() {
   return <BucketsPage />;
 }

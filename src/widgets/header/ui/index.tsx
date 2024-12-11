@@ -14,8 +14,6 @@ import { HeaderMobile } from './mobile';
 export const Header = () => {
   const { isHeaderHidden } = useHideHeader();
 
-  if (typeof window === 'undefined') return null;
-
   return createPortal(
     <m.header
       animate={{ y: isHeaderHidden ? -100 : 0 }}
