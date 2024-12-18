@@ -11,9 +11,7 @@ export const BucketsList = async () => {
   return (
     <ItemsGrid>
       {buckets.map((bucket) => (
-        // <Link key={bucket.id} href={generateBucketRoute(bucket.id)}>
         <BucketCard key={bucket.id} bucket={bucket} />
-        // </Link>
       ))}
     </ItemsGrid>
   );
