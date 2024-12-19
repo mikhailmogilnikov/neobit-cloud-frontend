@@ -18,6 +18,7 @@ export const Drawer = (props: DrawerProps) => {
   return (
     <VaulDrawer.Root
       open={open}
+      repositionInputs={false}
       shouldScaleBackground={false}
       onOpenChange={onOpenChange}
       {...rest}
@@ -44,7 +45,7 @@ export const Drawer = (props: DrawerProps) => {
                 <PiXBold className='h-4.5 w-4.5 opacity-30' />
               </VaulDrawer.Close>
             )}
-            <div className='max-h-[95svh] overflow-y-auto'>{children}</div>
+            <div className='max-h-[95svh] overflow-y-auto px-4 pb-4 flex flex-col gap-4'>{children}</div>
           </div>
         </VaulDrawer.Content>
       </VaulDrawer.Portal>
@@ -52,15 +53,13 @@ export const Drawer = (props: DrawerProps) => {
   );
 };
 
-export const DrawerTitle = ({
-  children,
-  className,
-  hidden,
-}: {
-  children: React.ReactNode;
-  hidden?: boolean;
+export interface DrawerTitleProps {
+  children?: React.ReactNode;
   className?: string;
-}) => {
+  hidden?: boolean;
+}
+
+export const DrawerTitle = ({ children, className, hidden }: DrawerTitleProps) => {
   const titleClassname = cn(
     'mt-8 py-4 text-center text-2xl font-semibold',
     hidden && 'hidden',
@@ -70,15 +69,13 @@ export const DrawerTitle = ({
   return <VaulDrawer.Title className={titleClassname}>{children}</VaulDrawer.Title>;
 };
 
-export const DrawerDescription = ({
-  children,
-  hidden,
-  className,
-}: {
-  children: React.ReactNode;
+export interface DrawerDescriptionProps {
+  children?: React.ReactNode;
   hidden?: boolean;
   className?: string;
-}) => {
+}
+
+export const DrawerDescription = ({ children, hidden, className }: DrawerDescriptionProps) => {
   const descriptionClassname = cn('text-center text-sm font-medium', hidden && 'hidden', className);
 
   return (

@@ -19,7 +19,7 @@ export const SectionHeader = ({
   return (
     <Flex className='h-12 items-center justify-between lg:h-20'>
       {backable ? (
-        <Flex as='button' className='items-center gap-2' onClick={back}>
+        <Flex as='button' className='items-center gap-2 cursor-pointer' onClick={back}>
           <PiCaretLeftBold className='h-6 w-6' />
           {title}
         </Flex>

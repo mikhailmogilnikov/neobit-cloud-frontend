@@ -14,6 +14,7 @@ const eslintConfig = [
     ],
     plugins: ['jsx-a11y', 'prettier', 'unused-imports', 'import', 'eslint-plugin-react-compiler'],
     rules: {
+      'jsx-a11y/no-autofocus': 'off',
       'react-hooks/exhaustive-deps': 'off',
       'react-compiler/react-compiler': 'error',
       '@conarti/feature-sliced/layers-slices': 'off',
