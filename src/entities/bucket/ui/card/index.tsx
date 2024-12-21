@@ -38,7 +38,7 @@ export const BucketCard = ({ bucket }: IBucketCardProps) => {
             </p>
           </Flex>
         </Link>
-        <CardOptions />
+        <CardOptions bucket={bucket} />
       </Flex>
     </Flex>
   );

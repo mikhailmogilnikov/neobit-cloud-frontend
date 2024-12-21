@@ -23,7 +23,7 @@ export const Dialog = (props: DialogProps) => {
     <RadixDialog {...rest}>
       <DialogPortal>
         <Overlay className='data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out fixed inset-0 z-50 bg-black/50' />
-        <Content className='bg-background data-[state=open]:animate-dialog-in data-[state=closed]:animate-dialog-out fixed top-1/2 left-1/2 z-60 max-h-[80svh] w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-lg'>
+        <Content className='bg-background data-[state=open]:animate-dialog-in data-[state=closed]:animate-dialog-out fixed top-1/2 left-1/2 z-60 max-h-[80svh] w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-lg'>
           <Close className='bg-content2 absolute top-6 right-6 rounded-full p-1'>
             <PiXBold className='h-5 w-5 opacity-30' />
           </Close>
@@ -35,13 +35,13 @@ export const Dialog = (props: DialogProps) => {
 };
 
 export interface DialogTitleProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   hidden?: boolean;
 }
 
 export const DialogTitle = ({ children, className, hidden }: DialogTitleProps) => {
-  const titleClassname = cn('text-2xl font-semibold', hidden && 'hidden', className);
+  const titleClassname = cn('text-xl font-semibold', hidden && 'hidden', className);
 
   return <RadixDialogTitle className={titleClassname}>{children}</RadixDialogTitle>;
 };

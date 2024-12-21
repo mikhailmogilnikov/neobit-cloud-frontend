@@ -6,13 +6,21 @@ import { useState } from 'react';
 
 import { PopoverContent, PopoverOption } from '@/src/shared/ui/popover';
 
-import { RenameBucketModal } from './rename-modal';
+import { IBucket } from '../../../model/bucket.type';
 
-export const CardOptions = () => {
+import { RenameBucketModal } from './rename-modal';
+import { DeleteBucketModal } from './delete-modal';
+
+export const CardOptions = ({ bucket }: { bucket: IBucket }) => {
   const [openRenameModal, setOpenRenameModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const handleOpenRenameModal = () => {
     setOpenRenameModal((prev) => !prev);
+  };
+
+  const handleOpenDeleteModal = () => {
+    setOpenDeleteModal((prev) => !prev);
   };
 
   return (
@@ -27,11 +35,24 @@ export const CardOptions = () => {
         >
           Переименовать
         </PopoverOption>
-        <PopoverOption color='danger' endContent={<PiTrashBold className='text-danger h-4 w-4' />}>
+        <PopoverOption
+          color='danger'
+          endContent={<PiTrashBold className='text-danger h-4 w-4' />}
+          onClick={handleOpenDeleteModal}
+        >
           Удалить
         </PopoverOption>
       </PopoverContent>
-      <RenameBucketModal open={openRenameModal} onOpenChange={handleOpenRenameModal} />
+      <RenameBucketModal
+        bucket={bucket}
+        open={openRenameModal}
+        onOpenChange={handleOpenRenameModal}
+      />
+      <DeleteBucketModal
+        bucket={bucket}
+        open={openDeleteModal}
+        onOpenChange={handleOpenDeleteModal}
+      />
     </Popover>
   );
 };

@@ -19,9 +19,9 @@ import {
 } from '../drawer/drawer';
 
 export type ModalProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   open: boolean;
-  onOpenChange: (open: boolean) => void;
+  onOpenChange: () => void;
   dialogProps?: DialogProps;
   drawerProps?: DrawerProps;
 };

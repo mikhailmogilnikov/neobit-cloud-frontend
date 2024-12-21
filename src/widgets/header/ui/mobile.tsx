@@ -3,13 +3,13 @@
 import { PiCaretRightBold, PiListBold } from 'react-icons/pi';
 import { useState } from 'react';
 
-import { Drawer, DrawerDescription, DrawerTitle } from '@/src/shared/ui/drawer';
 import { Flex } from '@/src/shared/ui/flex';
 import { Squircle } from '@/src/shared/ui/squircle';
 import { ThemeSelector } from '@/src/shared/ui/theme-selector';
 import { User } from '@/src/shared/ui/user';
 import { Divider } from '@/src/shared/ui/flex/divider';
 import { Progress } from '@/src/shared/ui/progress';
+import { Modal, ModalDescription, ModalTitle } from '@/src/shared/ui/modal';
 
 import { LogoutButton } from './logoutButton';
 
@@ -22,6 +22,10 @@ const user = {
 export const HeaderMobile = () => {
   const [open, setOpen] = useState(false);
 
+  const handleOpenChange = () => {
+    setOpen((prev) => !prev);
+  };
+
   return (
     <>
       <Squircle asChild>
@@ -30,15 +34,19 @@ export const HeaderMobile = () => {
           as='button'
           className='bg-content2 h-10 w-10 rounded-lg'
           justify='center'
-          onClick={() => setOpen(!open)}
+          onClick={handleOpenChange}
         >
           <PiListBold className='h-5 w-5 opacity-50' />
         </Flex>
       </Squircle>
-      <Drawer open={open} onOpenChange={setOpen}>
-        <DrawerTitle hidden>Меню</DrawerTitle>
-        <DrawerDescription hidden>Меню для мобильных устройств</DrawerDescription>
-        <Flex col className='mt-8 gap-5 p-4'>
+      <Modal open={open} onOpenChange={handleOpenChange}>
+        <ModalTitle dialogProps={{ hidden: true }} drawerProps={{ hidden: true }}>
+          Меню
+        </ModalTitle>
+        <ModalDescription dialogProps={{ hidden: true }} drawerProps={{ hidden: true }}>
+          Меню для мобильных устройств
+        </ModalDescription>
+        <Flex col className='mt-8 gap-5 md:mt-2'>
           <User {...user} />
           <Flex align='center' className='mt-2 gap-2' justify='between'>
             <p className='text-base font-medium'>Перейти в профиль</p>
@@ -58,7 +66,7 @@ export const HeaderMobile = () => {
           </Flex>
           <LogoutButton />
         </Flex>
-      </Drawer>
+      </Modal>
     </>
   );
 };
