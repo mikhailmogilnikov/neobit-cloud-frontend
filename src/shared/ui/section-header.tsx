@@ -1,30 +1,36 @@
-import { PiCaretLeftBold } from 'react-icons/pi';
+'use client';
 
-import { BackTrigger } from '../lib/providers/origin-tracker-provider';
+import { PiCaretLeftBold } from 'react-icons/pi';
+import { useRouter } from 'next/navigation';
 
 import { Flex } from './flex';
 
-export const SectionHeader = ({
-  children,
-  backable,
-}: {
+interface SectionHeaderProps {
   children: React.ReactNode;
   backable?: boolean;
-}) => {
-  const title = <h2 className='text-2xl font-semibold lg:text-3xl'>{children}</h2>;
+  endContent?: React.ReactNode;
+}
+
+export const SectionHeader = ({ children, backable, endContent }: SectionHeaderProps) => {
+  const { back } = useRouter();
+
+  const title = <h2 className='text-start text-2xl font-semibold lg:text-3xl'>{children}</h2>;
 
   return (
-    <Flex className='h-12 items-center justify-between lg:h-20'>
+    <Flex className='flex-col gap-6 max-md:mt-2 max-md:mb-4 md:h-20 md:flex-row md:items-center md:justify-between md:gap-4'>
       {backable ? (
-        <BackTrigger>
-          <Flex className='items-center gap-2'>
-            <PiCaretLeftBold className='h-6 w-6' />
-            {title}
-          </Flex>
-        </BackTrigger>
+        <Flex
+          as='button'
+          className='cursor-pointer items-start gap-2 md:items-center'
+          onClick={back}
+        >
+          <PiCaretLeftBold className='mt-1 h-6 w-6' />
+          {title}
+        </Flex>
       ) : (
         title
       )}
+      {endContent}
     </Flex>
   );
 };

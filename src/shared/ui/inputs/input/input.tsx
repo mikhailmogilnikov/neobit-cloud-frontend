@@ -14,11 +14,11 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = forwardRef<HTMLLabelElement, InputProps>((props, ref) => {
   const { className, endContent, startContent, inputRef, sizes: size, ...inputProps } = props;
 
-  const { root, input, startWrapper, endWrapper } = inputTV({ className, size });
+  const { root, input, startWrapper, endWrapper } = inputTV({ size });
 
   return (
     <Squircle asChild>
-      <label ref={ref} className={root()}>
+      <label ref={ref} className={root({ className })}>
         {startContent && <span className={startWrapper()}>{startContent}</span>}
         <input ref={inputRef} className={input()} {...inputProps} />
         {endContent && <span className={endWrapper()}>{endContent}</span>}

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { LazyMotion, MotionConfig } from 'motion/react';
 
 import { ThemeColorProvider } from '@/src/shared/lib/providers/theme-color-provider';
-import { OriginTrackerProvider } from '@/src/shared/lib/providers/origin-tracker-provider';
+import { ToastProvider } from '@/src/shared/lib/providers/toast-provider';
 
 const loadFeatures = () => import('@/src/shared/lib/motion').then((res) => res.default);
 
@@ -20,7 +20,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           storageKey='theme'
         >
           <ThemeColorProvider>
-            <OriginTrackerProvider>{children}</OriginTrackerProvider>
+            <ToastProvider>{children}</ToastProvider>
           </ThemeColorProvider>
         </ThemeProvider>
       </MotionConfig>
