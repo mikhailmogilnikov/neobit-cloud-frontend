@@ -3,10 +3,12 @@
 import { Popover, PopoverTrigger } from '@radix-ui/react-popover';
 import { PiDotsThreeVerticalBold, PiDownloadSimpleBold, PiTrashBold } from 'react-icons/pi';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import { PopoverContent, PopoverOption } from '@/src/shared/ui/popover';
 
-import { IFile } from '../../../model/file.type';
+import { getMimeType, IFile } from '../../../model/file.type';
+import { downloadFile } from '../../../api/download-file';
 
 import { FileCardDeleteModal } from './delete-modal';
 
@@ -17,8 +19,24 @@ export const FileCardOptions = ({ file }: { file: IFile }) => {
     setOpenDeleteModal((isOpen) => !isOpen);
   };
 
-  const handleDownload = () => {
-    window.open(file.download_url, '_blank');
+  const handleDownload = async () => {
+    try {
+      const response = await downloadFile(file.bucket_name, file.object_key);
+      const blob = new Blob([response], { type: getMimeType(file.extension) });
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+
+      a.href = url;
+      a.download = file.object_key;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+      toast.success('Файл скачан');
+    } catch (error) {
+      toast.error('Ошибка при скачивании файла');
+    }
   };
 
   return (

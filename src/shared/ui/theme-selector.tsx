@@ -26,11 +26,14 @@ const pointerPosition = {
   [ETheme.SYSTEM]: 64,
 };
 
+export const ThemeSelectorSkeleton = () => {
+  return <div className='bg-default h-[40px] w-[108px] animate-pulse rounded-full' />;
+};
+
 export const ThemeSelector = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useTheme();
 
-  if (typeof window === 'undefined')
-    return <div className={cn('bg-default h-[40px] w-[108px] animate-pulse rounded-full', className)} />;
+  if (typeof window === 'undefined') return <ThemeSelectorSkeleton />;
 
   return (
     <Flex

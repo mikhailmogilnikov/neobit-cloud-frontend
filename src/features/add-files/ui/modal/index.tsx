@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { toast } from 'sonner';
 import { PiCloudArrowUp, PiFile, PiTrash } from 'react-icons/pi';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/src/shared/ui/button';
 import { Flex } from '@/src/shared/ui/flex';
@@ -11,21 +12,28 @@ import { Divider } from '@/src/shared/ui/flex/divider';
 import { formatFileSize } from '@/src/shared/lib/utils/file-size';
 import { Squircle } from '@/src/shared/ui/squircle';
 
-interface AddFilesModalProps extends ModalProps {}
+import { uploadFile } from '../../api/upload-file';
 
-export const AddFilesModal = ({ open, onOpenChange }: AddFilesModalProps) => {
+interface AddFilesModalProps extends ModalProps {
+  bucketName: string;
+}
+
+export const AddFilesModal = ({ bucketName, open, onOpenChange }: AddFilesModalProps) => {
+  const { refresh } = useRouter();
+
   const [files, setFiles] = useState<FileList | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const filesCount = files?.length || 0;
 
-  const isDisabled = !filesCount || filesCount > 10;
+  const isDisabled = filesCount !== 1;
 
   const handleCloseModal = () => {
     onOpenChange();
 
     setTimeout(() => {
       setFiles(null);
-    }, 300);
+    }, 250);
   };
 
   const handleDeleteFile = (file: File) => {
@@ -41,28 +49,45 @@ export const AddFilesModal = ({ open, onOpenChange }: AddFilesModalProps) => {
     });
   };
 
-  const handleCreateFiles = () => {
-    toast.success(
-      `${plural(filesCount, ['Добавлен', 'Добавлено', 'Добавлено'])} ${filesCount} ${plural(filesCount, ['файл', 'файла', 'файлов'])}.`,
-    );
-    handleCloseModal();
+  const handleCreateFiles = async () => {
+    setIsLoading(true);
+
+    const file = files?.[0];
+
+    if (!file) return;
+
+    try {
+      await uploadFile(file, bucketName);
+
+      refresh();
+
+      toast.success(
+        `${plural(filesCount, ['Добавлен', 'Добавлено', 'Добавлено'])} ${filesCount} ${plural(filesCount, ['файл', 'файла', 'файлов'])}.`,
+      );
+
+      handleCloseModal();
+    } catch (error) {
+      toast.error('Ошибка при загрузке файла');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <Modal open={open} onOpenChange={handleCloseModal}>
-      <ModalTitle>Загрузка файлов</ModalTitle>
+      <ModalTitle>Загрузка файла</ModalTitle>
       <ModalDescription dialogProps={{ hidden: true }} drawerProps={{ hidden: true }}>
-        Загрузка файлов
+        Загрузка файла
       </ModalDescription>
       <Flex col className='h-full gap-8 md:mt-4'>
         <Flex col className='gap-8 md:max-h-[60svh] md:overflow-y-scroll'>
-          <FileTrigger multiple onAttach={setFiles}>
+          <FileTrigger onAttach={setFiles}>
             <Button
               className='h-fit w-full flex-col items-center justify-center gap-2 py-6'
               size='lg'
             >
               <PiCloudArrowUp className='h-10 w-10 opacity-50' />
-              Добавить файлы
+              Добавить файл
             </Button>
           </FileTrigger>
 
@@ -99,10 +124,6 @@ export const AddFilesModal = ({ open, onOpenChange }: AddFilesModalProps) => {
           )}
         </Flex>
 
-        <p className='text-foreground/50 -my-4 text-sm'>
-          Максимальное количество файлов для загрузки - 10.
-        </p>
-
         <Flex className='gap-4'>
           <Button className='w-full' onClick={handleCloseModal}>
             Отмена
@@ -111,6 +132,7 @@ export const AddFilesModal = ({ open, onOpenChange }: AddFilesModalProps) => {
             className='w-full'
             color='inverse'
             isDisabled={isDisabled}
+            isLoading={isLoading}
             onClick={handleCreateFiles}
           >
             Загрузить

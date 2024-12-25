@@ -1,5 +1,6 @@
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/src/shared/ui/button';
 import { Flex } from '@/src/shared/ui/flex';
@@ -17,12 +18,15 @@ export const RenameBucketModal = ({
   onOpenChange: () => void;
   bucket: IBucket;
 }) => {
-  const { id, name } = bucket;
+  const { id, bucket_name } = bucket;
 
-  const [newName, setNewName] = useState(name);
+  const { refresh } = useRouter();
 
-  const handleSubmit = () => {
-    toast.success(`Папка "${name}" переименована в "${newName}"`);
+  const [newName, setNewName] = useState(bucket_name);
+
+  const handleSubmit = async () => {
+    refresh();
+    toast.success(`Папка "${bucket_name}" переименована в "${newName}"`);
     onOpenChange();
   };
 
@@ -37,7 +41,7 @@ export const RenameBucketModal = ({
       <Input
         autoFocus
         className='mt-0 lg:mt-4'
-        defaultValue={name}
+        defaultValue={bucket_name}
         placeholder='Новое название папки'
         sizes='md'
         value={newName}
@@ -51,7 +55,7 @@ export const RenameBucketModal = ({
         <Button
           className='w-full'
           color='inverse'
-          isDisabled={newName === name}
+          isDisabled={newName === bucket_name}
           onClick={handleSubmit}
         >
           Переименовать
