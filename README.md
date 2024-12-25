@@ -7,5 +7,9 @@ npm install
 ```
 
 ```bash
-npm run dev
+npm run build
+```
+
+```bash
+npm run start
 ```
