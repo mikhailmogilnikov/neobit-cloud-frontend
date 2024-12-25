@@ -16,13 +16,13 @@ export interface IBucketCardProps {
 }
 
 export const BucketCard = ({ bucket }: IBucketCardProps) => {
-  const { name, files_count, size, id } = bucket;
+  const { bucket_name, file_count, size } = bucket;
 
   const formattedSize = formatFileSize(size);
 
   return (
     <Flex col className='gap-4'>
-      <Link href={generateBucketRoute(id)}>
+      <Link href={generateBucketRoute(bucket_name)}>
         <Squircle asChild>
           <Flex className='bg-content2 aspect-square w-full items-center justify-center rounded-xl'>
             <PiFolder className='h-1/2 w-1/2' opacity={0.2} />
@@ -30,11 +30,11 @@ export const BucketCard = ({ bucket }: IBucketCardProps) => {
         </Squircle>
       </Link>
       <Flex className='w-full justify-between'>
-        <Link className='w-full' href={generateBucketRoute(id)}>
+        <Link className='w-full' href={generateBucketRoute(bucket_name)}>
           <Flex col className='w-full gap-1'>
-            <h3 className='text-md font-semibold'>{name}</h3>
+            <h3 className='text-md font-semibold'>{bucket_name}</h3>
             <p className='text-xs text-gray-500'>
-              {files_count} {plural(files_count, ['файл', 'файла', 'файлов'])}, {formattedSize}
+              {file_count} {plural(file_count, ['файл', 'файла', 'файлов'])}, {formattedSize}
             </p>
           </Flex>
         </Link>

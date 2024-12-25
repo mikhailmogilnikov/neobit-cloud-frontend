@@ -1,11 +1,12 @@
 export type SignInFormState = {
-  email: string;
+  username: string;
   password: string;
   error: string | null;
 };
 
 export const SignInFormInitialState: SignInFormState = {
-  email: '',
+  username: '',
   password: '',
   error: null,
 };
+

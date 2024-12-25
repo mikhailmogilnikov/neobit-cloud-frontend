@@ -5,13 +5,6 @@ const nextConfig: NextConfig = {
     dynamicIO: true,
     reactCompiler: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        hostname: 'lipsum.app',
-      },
-    ],
-  },
 };
 
 export default nextConfig;

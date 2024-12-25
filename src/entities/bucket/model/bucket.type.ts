@@ -1,8 +1,10 @@
 export interface IBucket {
   id: string;
-  name: string;
-  files_count: number;
+  bucket_name: string;
+  file_count: number;
   size: number;
-  createdAt?: string;
-  updatedAt?: string;
+  created_at?: string;
+  updated_at?: string;
+  owner_name: string;
+  owner_id: string;
 }

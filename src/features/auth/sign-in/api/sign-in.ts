@@ -1,33 +1,28 @@
-'use server';
+import { api, API_URLS } from '@/src/shared/api';
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+export interface SignInRequest {
+  grant_type: 'password';
+  username: string;
+  password: string;
+}
 
-import { EAppRoutes } from '@/src/shared/config/routes';
+export interface SignInResponse {
+  access_token: string;
+  token_type: string;
+}
 
-import { SignInFormState } from '../model/form.model';
-import { signInSchema } from '../model/zod-schema';
+export const signIn = async (data: SignInRequest) => {
+  const { username, password } = data;
 
-export const signInAction = async (previousState: SignInFormState, formData: FormData) => {
-  const data = Object.fromEntries(formData);
+  const resp = await api.post<SignInResponse>(
+    API_URLS.AUTH.SIGN_IN,
+    {
+      username,
+      password,
+      grant_type: 'password',
+    },
+    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+  );
 
-  const result = signInSchema.safeParse(data);
-
-  if (!result.success) {
-    return {
-      email: data.email as string,
-      password: data.password as string,
-      error:
-        result.error.flatten().fieldErrors?.email?.[0] ||
-        result.error.flatten().fieldErrors?.password?.[0] ||
-        null,
-    };
-  }
-
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  const cookieStore = await cookies();
-
-  cookieStore.set('access', '123456');
-  redirect(EAppRoutes.BUCKETS);
+  return resp;
 };

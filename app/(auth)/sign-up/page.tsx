@@ -1,5 +1,7 @@
+'use cache';
+
 import { SignUpPage } from '@/src/page/auth/sign-up';
 
-export default function SignUp() {
+export default async function SignUp() {
   return <SignUpPage />;
 }

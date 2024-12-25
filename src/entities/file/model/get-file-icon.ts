@@ -8,7 +8,7 @@ import {
   PiFileZip,
 } from 'react-icons/pi';
 
-import { FileExtension } from '../model/file.type';
+import { FileExtension } from './file.type';
 
 export enum FileTypes {
   DOCUMENT = 'document',

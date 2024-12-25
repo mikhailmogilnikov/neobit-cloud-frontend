@@ -7,7 +7,7 @@ import { Button } from '@/src/shared/ui/button';
 
 import { AddFilesModal } from '../modal';
 
-export const AddFilesButton = () => {
+export const AddFilesButton = ({ bucketName }: { bucketName: string }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpenChange = () => {
@@ -18,9 +18,9 @@ export const AddFilesButton = () => {
     <>
       <Button className='flex items-center gap-2' color='inverse' onClick={handleOpenChange}>
         <PiFileArrowUpBold size={20} />
-        Загрузить файлы
+        Загрузить файл
       </Button>
-      <AddFilesModal open={open} onOpenChange={handleOpenChange} />
+      <AddFilesModal bucketName={bucketName} open={open} onOpenChange={handleOpenChange} />
     </>
   );
 };
